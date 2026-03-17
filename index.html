@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MonLogistics Trans Service</title>
+  <title>MonLogistics Trans Service — грузоперевозки по России и Монголии</title>
+  <meta name="description" content="Логистическая компания MonLogistics: экспедирование вагонов, контейнерные перевозки, таможенное оформление. Опыт более 21 года.">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" as="style">
+  <link rel="preload" href="style.css" as="style">
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- GSAP для анимации уровней -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -31,7 +34,7 @@
     <div class="header__container">
       <div class="header__logo">
         <a href="./index.html" class="header__logo-link">
-          <img src="./images/logo_nophone.PNG" alt="MonLogistics">
+          <img src="./images/logo_nophone.PNG" alt="MonLogistics" width="150" height="40" loading="eager">
         </a>
       </div>
       <nav class="header__nav">
@@ -66,26 +69,24 @@
     <!-- Герой (fullscreen) -->
     <section class="hero" id="hero">
       <div class="hero__bg">
-        <img src="./images/poezd-right.webp" alt="Поезд">
+        <picture>
+          <source srcset="./images/poezd-right.webp" type="image/webp">
+          <img src="./images/poezd-right.jpg" alt="Поезд на фоне гор" width="1920" height="1080" loading="eager">
+        </picture>
       </div>
 
       <!-- Карточка в герое (вращающаяся) -->
       <div class="card hero-card">
         <div class="content">
-          <!-- ЛИЦЕВАЯ СТОРОНА (Вращающаяся рамка) -->
           <div class="back">
             <div class="back-content">
-              <svg stroke="#ffffff" xmlns="http://www.w3.org/2000" viewBox="0 0 50 50" height="50px" width="50px" fill="#ffffff">
-                <g id="SVGRepo_iconCarrier">
-                  <path d="M20.84375 0.03125C20.191406 0.0703125 19.652344 0.425781 19.21875 1.53125C18.988281 2.117188 18.5 3.558594 18.03125 4.9375C17.792969 5.636719 17.570313 6.273438 17.40625 6.75C17.390625 6.796875 17.414063 6.855469 17.40625 6.90625C17.398438 6.925781 17.351563 6.949219 17.34375 6.96875L17.25 7.25C18.566406 7.65625 19.539063 8.058594 19.625 8.09375C22.597656 9.21875 28.351563 11.847656 33.28125 16.78125C38.5 22 41.183594 28.265625 42.09375 30.71875C42.113281 30.761719 42.375 31.535156 42.75 32.84375C42.757813 32.839844 42.777344 32.847656 42.78125 32.84375C43.34375 32.664063 44.953125 32.09375 46.3125 31.625C47.109375 31.351563 47.808594 31.117188 48.15625 31C49.003906 30.714844 49.542969 30.292969 49.8125 29.6875C50.074219 29.109375 50.066406 28.429688 49.75 27.6875C49.605469 27.347656 49.441406 26.917969 49.25 26.4375C47.878906 23.007813 45.007813 15.882813 39.59375 10.46875C33.613281 4.484375 25.792969 1.210938 22.125 0.21875C21.648438 0.0898438 21.234375 0.0078125 20.84375 0.03125 Z M 16.46875 9.09375L0.0625 48.625C-0.09375 48.996094 -0.00390625 49.433594 0.28125 49.71875C0.472656 49.910156 0.738281 50 1 50C1.128906 50 1.253906 49.988281 1.375 49.9375L40.90625 33.59375C40.523438 32.242188 40.222656 31.449219 40.21875 31.4375C39.351563 29.089844 36.816406 23.128906 31.875 18.1875C27.035156 13.34375 21.167969 10.804688 18.875 9.9375C18.84375 9.925781 17.8125 9.5 16.46875 9.09375 Z M 17 16C19.761719 16 22 18.238281 22 21C22 23.761719 19.761719 26 17 26C15.140625 26 13.550781 24.972656 12.6875 23.46875L15.6875 16.1875C16.101563 16.074219 16.550781 16 17 16 Z M 31 22C32.65625 22 34 23.34375 34 25C34 25.917969 33.585938 26.730469 32.9375 27.28125L32.90625 27.28125C33.570313 27.996094 34 28.949219 34 30C34 32.210938 32.210938 34 30 34C27.789063 34 26 32.210938 26 30C26 28.359375 26.996094 26.960938 28.40625 26.34375L28.3125 26.3125C28.117188 25.917969 28 25.472656 28 25C28 23.34375 29.34375 22 31 22 Z M 21 32C23.210938 32 25 33.789063 25 36C25 36.855469 24.710938 37.660156 24.25 38.3125L20.3125 39.9375C18.429688 39.609375 17 37.976563 17 36C17 33.789063 18.789063 32 21 32 Z M 9 34C10.65625 34 12 35.34375 12 37C12 38.65625 10.65625 40 9 40C7.902344 40 6.960938 39.414063 6.4375 38.53125L8.25 34.09375C8.488281 34.03125 8.742188 34 9 34Z"></path>
-                </g>
-              </svg>
+              <svg stroke="#ffffff" xmlns="http://www.w3.org/2000" viewBox="0 0 50 50" height="50px" width="50px" fill="#ffffff" aria-hidden="true">
+                <g><path d="M20.84375 0.03125C20.191406 0.0703125 19.652344 0.425781 19.21875 1.53125C18.988281 2.117188 18.5 3.558594 18.03125 4.9375C17.792969 5.636719 17.570313 6.273438 17.40625 6.75C17.390625 6.796875 17.414063 6.855469 17.40625 6.90625C17.398438 6.925781 17.351563 6.949219 17.34375 6.96875L17.25 7.25C18.566406 7.65625 19.539063 8.058594 19.625 8.09375C22.597656 9.21875 28.351563 11.847656 33.28125 16.78125C38.5 22 41.183594 28.265625 42.09375 30.71875C42.113281 30.761719 42.375 31.535156 42.75 32.84375C42.757813 32.839844 42.777344 32.847656 42.78125 32.84375C43.34375 32.664063 44.953125 32.09375 46.3125 31.625C47.109375 31.351563 47.808594 31.117188 48.15625 31C49.003906 30.714844 49.542969 30.292969 49.8125 29.6875C50.074219 29.109375 50.066406 28.429688 49.75 27.6875C49.605469 27.347656 49.441406 26.917969 49.25 26.4375C47.878906 23.007813 45.007813 15.882813 39.59375 10.46875C33.613281 4.484375 25.792969 1.210938 22.125 0.21875C21.648438 0.0898438 21.234375 0.0078125 20.84375 0.03125 Z M 16.46875 9.09375L0.0625 48.625C-0.09375 48.996094 -0.00390625 49.433594 0.28125 49.71875C0.472656 49.910156 0.738281 50 1 50C1.128906 50 1.253906 49.988281 1.375 49.9375L40.90625 33.59375C40.523438 32.242188 40.222656 31.449219 40.21875 31.4375C39.351563 29.089844 36.816406 23.128906 31.875 18.1875C27.035156 13.34375 21.167969 10.804688 18.875 9.9375C18.84375 9.925781 17.8125 9.5 16.46875 9.09375 Z M 17 16C19.761719 16 22 18.238281 22 21C22 23.761719 19.761719 26 17 26C15.140625 26 13.550781 24.972656 12.6875 23.46875L15.6875 16.1875C16.101563 16.074219 16.550781 16 17 16 Z M 31 22C32.65625 22 34 23.34375 34 25C34 25.917969 33.585938 26.730469 32.9375 27.28125L32.90625 27.28125C33.570313 27.996094 34 28.949219 34 30C34 32.210938 32.210938 34 30 34C27.789063 34 26 32.210938 26 30C26 28.359375 26.996094 26.960938 28.40625 26.34375L28.3125 26.3125C28.117188 25.917969 28 25.472656 28 25C28 23.34375 29.34375 22 31 22 Z M 21 32C23.210938 32 25 33.789063 25 36C25 36.855469 24.710938 37.660156 24.25 38.3125L20.3125 39.9375C18.429688 39.609375 17 37.976563 17 36C17 33.789063 18.789063 32 21 32 Z M 9 34C10.65625 34 12 35.34375 12 37C12 38.65625 10.65625 40 9 40C7.902344 40 6.960938 39.414063 6.4375 38.53125L8.25 34.09375C8.488281 34.03125 8.742188 34 9 34Z"></path>
+              </g></svg>
               <strong>MonLogistics</strong>
               <p style="font-size: 10px; opacity: 0.7; margin-top: 5px;">Узнать тариф</p>
             </div>
           </div>
-
-          <!-- ВНУТРЕННЯЯ СТОРОНА (Появляется при Hover) -->
           <div class="front">
             <div class="img">
               <div class="circle"></div>
@@ -97,12 +98,10 @@
               <div class="description">
                 <div class="title">
                   <p class="title"><strong>Тарифы</strong></p>
-                  <svg fill-rule="nonzero" height="15px" width="15px" viewBox="0,0,256,256" xmlns="http://www.w3.org">
-                    <g fill="#20c997"><g transform="scale(8,8)"><path d="M25,27l-9,-6.75l-9,6.75v-23h18z"></path></g></g>
-                  </svg>
+                  <svg fill-rule="nonzero" height="15px" width="15px" viewBox="0,0,256,256" xmlns="http://www.w3.org" aria-hidden="true"><g fill="#20c997"><g transform="scale(8,8)"><path d="M25,27l-9,-6.75l-9,6.75v-23h18z"></path></g></g></svg>
                 </div>
                 <p class="card-footer">Расчет стоимости за 15 минут</p>
-                <a href="#" class="card-btn modal-trigger">Оставить заявку</a>
+                <a href="#" class="card-btn modal-trigger" aria-label="Оставить заявку">Оставить заявку</a>
               </div>
             </div>
           </div>
@@ -120,56 +119,44 @@
         </div>
         <div class="about__card">
           <div class="image-card">
-            <img src="./images/vagon-left.webp" alt="О компании">
+            <picture>
+              <source srcset="./images/vagon-left.webp" type="image/webp">
+              <img src="./images/vagon-left.jpg" alt="Грузовой вагон" width="400" height="300" loading="lazy">
+            </picture>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Преимущества (жидкость с эффектом перетекания) -->
+    <!-- Преимущества (новые карточки по шаблону) -->
     <section class="advantages" id="advantages">
       <div class="container">
         <h2 class="section-title">Наши преимущества</h2>
-
-        <!-- Сетка карточек (к ней применён goo-фильтр) -->
-        <div class="cards-grid">
-          <!-- Карточка 1: Гибкая система платежей -->
-          <div class="card" id="card1">
-            <canvas class="liquid-canvas" id="canvas1" width="300" height="400"></canvas>
-            <div class="card-content">
-              <div class="icon">🔻</div>
-              <h3>Гибкая система платежей</h3>
-              <p>Включая расчёты через монгольские счета</p>
+        <div class="advantages__grid">
+          <!-- Первая строка: 4 карточки -->
+          <div class="cards-row">
+            <div class="card advantage-card" style="background-color: #007e9e;">
+              <p class="tip">Гибкая система платежей</p>
+              <p class="second-text">Включая расчёты через монгольские счета</p>
+            </div>
+            <div class="card advantage-card" style="background-color: #0062ff;">
+              <p class="tip">Опыт работы</p>
+              <p class="second-text">С транзитными, импортными и экспортными грузами</p>
+            </div>
+            <div class="card advantage-card" style="background-color: #18cd5e;">
+              <p class="tip">Таможенное сопровождение</p>
+              <p class="second-text">Подготовка и сопровождение документов</p>
+            </div>
+            <div class="card advantage-card" style="background-color: #f0b90b;">
+              <p class="tip">Индивидуальный подход</p>
+              <p class="second-text">К каждому клиенту</p>
             </div>
           </div>
-
-          <!-- Карточка 2: Опыт работы -->
-          <div class="card" id="card2">
-            <canvas class="liquid-canvas" id="canvas2" width="300" height="400"></canvas>
-            <div class="card-content">
-              <div class="icon">🔻</div>
-              <h3>Опыт работы</h3>
-              <p>С транзитными, импортными и экспортными грузами</p>
-            </div>
-          </div>
-
-          <!-- Карточка 3: Таможенное сопровождение -->
-          <div class="card" id="card3">
-            <canvas class="liquid-canvas" id="canvas3" width="300" height="400"></canvas>
-            <div class="card-content">
-              <div class="icon">🔻</div>
-              <h3>Таможенное сопровождение</h3>
-              <p>Подготовка документов</p>
-            </div>
-          </div>
-
-          <!-- Нижняя широкая карточка 4: Активное управление -->
-          <div class="card wide" id="card4">
-            <canvas class="liquid-canvas" id="canvas4" width="940" height="300"></canvas>
-            <div class="card-content">
-              <div class="icon">🔻</div>
-              <h3>Активное управление логистикой</h3>
-              <p>Взаимодействие с РЖД для ускорения грузов</p>
+          <!-- Вторая строка: одна широкая карточка -->
+          <div class="cards-row wide">
+            <div class="card advantage-card wide-card" style="background-color: #8b1e1e;">
+              <p class="tip">Активное управление</p>
+              <p class="second-text">Взаимодействуем с железными дорогами для ускорения продвижения ваших грузов</p>
             </div>
           </div>
         </div>
@@ -184,7 +171,7 @@
           <!-- Этап 1: Заполните анкету -->
           <div class="accordion-item">
             <div class="accordion-header">
-              <div class="step-icon">📋</div>
+              <div class="step-icon" aria-hidden="true">📋</div>
               <span class="step-number">1</span>
               <span class="step-title">Заполните анкету</span>
               <span class="accordion-icon"></span>
@@ -192,18 +179,17 @@
             <div class="accordion-content">
               <div class="accordion-content-inner">
                 <div class="step-image-top">
-                  <img src="./images/vagon-back.webp" alt="Форма">
+                  <picture>
+                    <source srcset="./images/vagon-back.webp" type="image/webp">
+                    <img src="./images/vagon-back.jpg" alt="Заполнение анкеты" width="400" height="220" loading="lazy">
+                  </picture>
                 </div>
                 <p>Кратко заполните информацию о вашей компании</p>
                 <a href="#" class="animated-button modal-trigger">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24">
-                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="arr-2" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
                   <span class="text">Заполнить анкету</span>
                   <span class="circle"></span>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24">
-                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg>
                 </a>
               </div>
             </div>
@@ -212,7 +198,7 @@
           <!-- Этап 2: Получите расчёт -->
           <div class="accordion-item">
             <div class="accordion-header">
-              <div class="step-icon">⚡</div>
+              <div class="step-icon" aria-hidden="true">⚡</div>
               <span class="step-number">2</span>
               <span class="step-title">Получите расчёт</span>
               <span class="accordion-icon"></span>
@@ -223,7 +209,10 @@
                   <p>Наш эксперт обработает заявку и подготовит индивидуальное предложение с учётом всех параметров груза. Обычно это занимает не более 2 часов.</p>
                 </div>
                 <div class="step-image">
-                  <img src="./images/vagon-right.webp" alt="Расчёт">
+                  <picture>
+                    <source srcset="./images/vagon-right.webp" type="image/webp">
+                    <img src="./images/vagon-right.jpg" alt="Расчёт стоимости" width="400" height="220" loading="lazy">
+                  </picture>
                 </div>
               </div>
             </div>
@@ -232,7 +221,7 @@
           <!-- Этап 3: Подпишите договор -->
           <div class="accordion-item">
             <div class="accordion-header">
-              <div class="step-icon">✍️</div>
+              <div class="step-icon" aria-hidden="true">✍️</div>
               <span class="step-number">3</span>
               <span class="step-title">Подпишите договор</span>
               <span class="accordion-icon"></span>
@@ -240,7 +229,10 @@
             <div class="accordion-content">
               <div class="step-row reverse">
                 <div class="step-image">
-                  <img src="./images/zavod.webp" alt="Договор">
+                  <picture>
+                    <source srcset="./images/zavod.webp" type="image/webp">
+                    <img src="./images/zavod.jpg" alt="Подписание договора" width="400" height="220" loading="lazy">
+                  </picture>
                 </div>
                 <div class="step-text">
                   <p>Вы получите коммерческое предложение с чёткими условиями. После согласования мы подготовим договор за 1 час и отправим вам на подпись.</p>
@@ -256,20 +248,16 @@
     <section class="services" id="services">
       <div class="container">
         <h2 class="section-title">Наши услуги</h2>
-        
-        <!-- Slider main container -->
         <div class="swiper-container services-swiper">
           <div class="swiper-wrapper">
-            <!-- Железнодорожные перевозки -->
             <div class="swiper-slide" style="background-image: url('./images/vg-1.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">🚆 Железнодорожные перевозки</p>
                 <span class="swiper-caption" data-swiper-parallax="-20%">срок: от 3 дней</span>
-                <p class="swiper-description" data-swiper-parallax="-10%">Перевозка вагонов, контейнеров и контейнерных поездов по территории Монголии и России. Маршруты из Китая и Монголии в Россию и Европу, а также в обратном направлении.</p>
+                <p class="swiper-description" data-swiper-parallax="-10%">Перевозка вагонов, контейнеров и контейнерных поездов по территории Монголии и России.</p>
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Автоперевозки -->
             <div class="swiper-slide" style="background-image: url('./images/vg-2.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">🚛 Автоперевозки</p>
@@ -278,7 +266,6 @@
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Комплекс услуг по Монголии -->
             <div class="swiper-slide" style="background-image: url('./images/vg-3.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">🏔️ Комплекс услуг по Монголии</p>
@@ -287,7 +274,6 @@
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Предоставление контейнеров -->
             <div class="swiper-slide" style="background-image: url('./images/vg-4.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">📦 Предоставление контейнеров</p>
@@ -296,7 +282,6 @@
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Предоставление вагонов -->
             <div class="swiper-slide" style="background-image: url('./images/vg-5.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">🚞 Крытые вагоны и полувагоны</p>
@@ -305,7 +290,6 @@
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Платежно-финансовые услуги -->
             <div class="swiper-slide" style="background-image: url('./images/vg-6.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">💰 Платежно-финансовые услуги</p>
@@ -314,7 +298,6 @@
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Информационные услуги -->
             <div class="swiper-slide" style="background-image: url('./images/vg-7.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">📊 Информационные услуги</p>
@@ -323,7 +306,6 @@
                 <a href="#" class="swiper-link modal-trigger" data-swiper-parallax="-5%">Рассчитать тариф →</a>
               </div>
             </div>
-            <!-- Анализ документов -->
             <div class="swiper-slide" style="background-image: url('./images/vg-8.webp');">
               <div class="swiper-content">
                 <p class="swiper-title" data-swiper-parallax="-30%" data-swiper-parallax-scale=".7">📄 Анализ документов для декларации</p>
@@ -333,11 +315,7 @@
               </div>
             </div>
           </div>
-
-          <!-- Пагинация (точки) -->
           <div class="swiper-pagination"></div>
-
-          <!-- Кнопки навигации (стрелки) -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </div>
@@ -366,14 +344,14 @@
         <h2 class="section-title">Контакты</h2>
         <div class="contacts__grid">
           <div class="contacts__info">
-            <p><i class="fas fa-phone-alt"></i> <a href="tel:+79503884696">+7 950 388-46-96</a> (MAX / WeChat)</p>
-            <p><i class="fas fa-phone-alt"></i> <a href="tel:+79085953879">+7 908 595-38-79</a> (MAX / WeChat)</p>
-            <p><i class="fas fa-phone-alt"></i> <a href="tel:+79931239731">+7 993 123-97-31</a> (MAX / WeChat)</p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:ALLMLTS@monlogistics.mn">ALLMLTS@monlogistics.mn</a></p>
-            <p><i class="fab fa-weixin"></i> WeChat доступен по номерам</p>
+            <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="tel:+79503884696">+7 950 388-46-96</a> (MAX / WeChat)</p>
+            <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="tel:+79085953879">+7 908 595-38-79</a> (MAX / WeChat)</p>
+            <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="tel:+79931239731">+7 993 123-97-31</a> (MAX / WeChat)</p>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:ALLMLTS@monlogistics.mn">ALLMLTS@monlogistics.mn</a></p>
+            <p><i class="fab fa-weixin" aria-hidden="true"></i> WeChat доступен по номерам</p>
           </div>
           <div class="contacts__map">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=104.295075%2C52.276275&z=16&pt=104.295075,52.276275,pm2rdm" width="100%" height="300" frameborder="0" allowfullscreen="true"></iframe>
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=104.295075%2C52.276275&z=16&pt=104.295075,52.276275,pm2rdm" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" title="Карта проезда"></iframe>
           </div>
         </div>
       </div>
@@ -386,43 +364,26 @@
     </div>
   </footer>
 
-  <!-- SVG-фильтр для эффекта goo -->
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
-    <defs>
-      <filter id="goo">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-        <feBlend in="SourceGraphic" in2="goo" />
-      </filter>
-    </defs>
-  </svg>
-
   <!-- Модальное окно для заявки -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-container">
       <button class="modal-close" id="modalClose">&times;</button>
       <h3 class="modal-title">Оставить заявку</h3>
-      
-      <!-- Прогресс-бар -->
       <div class="progress-bar-container">
         <div class="progress-bar-fill" id="progressBarFill" style="width: 20%;"></div>
       </div>
-      
-      <!-- Шаги формы -->
       <div class="step step-1" id="step1">
-        <label>Ваше имя</label>
+        <label for="nameInput">Ваше имя</label>
         <input type="text" id="nameInput" placeholder="Введите имя" autocomplete="off">
         <button class="next-btn" id="next1">Далее</button>
       </div>
-      
       <div class="step step-2" id="step2" style="display: none;">
-        <label>Email</label>
+        <label for="emailInput">Email</label>
         <input type="email" id="emailInput" placeholder="Введите email" autocomplete="off">
         <button class="next-btn" id="next2">Далее</button>
       </div>
-      
       <div class="step step-3" id="step3" style="display: none;">
-        <label>Выберите услугу</label>
+        <label for="serviceSelect">Выберите услугу</label>
         <select id="serviceSelect">
           <option value="Железнодорожные перевозки">Железнодорожные перевозки</option>
           <option value="Автоперевозки">Автоперевозки</option>
@@ -435,13 +396,11 @@
         </select>
         <button class="next-btn" id="next3">Далее</button>
       </div>
-      
       <div class="step step-4" id="step4" style="display: none;">
-        <label>Комментарий (необязательно)</label>
+        <label for="messageInput">Комментарий (необязательно)</label>
         <textarea id="messageInput" rows="3" placeholder="Ваше сообщение..."></textarea>
         <button class="next-btn" id="next4">Далее</button>
       </div>
-      
       <div class="step step-5" id="step5" style="display: none;">
         <p>Проверьте введённые данные:</p>
         <ul class="summary-list" id="summaryList"></ul>
@@ -450,8 +409,7 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 </body>
 </html>
