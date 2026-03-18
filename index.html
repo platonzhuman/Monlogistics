@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <!-- Font Awesome (для резервных иконок, но основные заменены на SVG) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -52,10 +51,16 @@
           <li><a href="#contacts">Контакты</a></li>
         </ul>
       </nav>
-      <button class="header__burger" id="burgerBtn" aria-label="Меню">
-        <span></span><span></span><span></span>
-      </button>
+      
+      <!-- Гамбургер (стилизованный чекбокс) -->
+      <input type="checkbox" id="checkbox" class="header__checkbox">
+      <label for="checkbox" class="header__toggle">
+          <div id="bar1" class="bars"></div>
+          <div id="bar2" class="bars"></div>
+          <div id="bar3" class="bars"></div>
+      </label>
     </div>
+    
     <!-- Мобильное меню -->
     <div class="mobile-menu" id="mobileMenu">
       <button class="mobile-menu__close" id="closeBtn"><i class="fas fa-times"></i></button>
@@ -69,6 +74,8 @@
         </ul>
       </nav>
     </div>
+    <!-- Оверлей для затемнения фона -->
+    <div class="menu-overlay" id="menuOverlay"></div>
   </header>
 
   <main>
@@ -87,7 +94,6 @@
           <!-- ЛИЦЕВАЯ СТОРОНА (с красивым SVG логотипом) -->
           <div class="back">
             <div class="back-content">
-              <!-- Новый стильный SVG логотип -->
               <svg class="hero-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="50" cy="50" r="45" stroke="url(#grad1)" stroke-width="2" fill="none"/>
                 <defs>
@@ -117,7 +123,6 @@
               <div class="description">
                 <div class="title">
                   <p class="title"><strong>Тарифы</strong></p>
-                  <!-- Стильный SVG для иконки -->
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#f0b90b" stroke-width="2" stroke-linejoin="round"/>
                     <path d="M2 17L12 22L22 17" stroke="#f0b90b" stroke-width="2" stroke-linejoin="round"/>
@@ -152,65 +157,65 @@
       </div>
     </section>
 
-<!-- Преимущества (простые карточки) -->
-<section class="advantages" id="advantages">
-  <div class="container">
-    <h2 class="section-title">Наши преимущества</h2>
-    <div class="advantages__grid">
-      <!-- Первая строка: 4 карточки -->
-      <div class="cards-row">
-        <div class="card advantage-card" style="background-color: #007e9e;">
-          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-            <circle cx="12" cy="12" r="10" stroke="white"/>
-            <path d="M6 12L10 16L18 8" stroke="white" stroke-linecap="round"/>
-          </svg>
-          <p class="tip">Гибкая система платежей</p>
-          <p class="second-text">Включая расчёты через монгольские счета</p>
-        </div>
-        <div class="card advantage-card" style="background-color: #0062ff;">
-          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-            <rect x="4" y="8" width="16" height="12" rx="2" stroke="white"/>
-            <path d="M8 6V4M16 6V4" stroke="white"/>
-            <path d="M8 12H16M8 16H12" stroke="white"/>
-          </svg>
-          <p class="tip">Опыт работы</p>
-          <p class="second-text">С транзитными, импортными и экспортными грузами</p>
-        </div>
-        <div class="card advantage-card" style="background-color: #18cd5e;">
-          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
-            <path d="M2 17L12 22L22 17" stroke="white"/>
-            <path d="M2 12L12 17L22 12" stroke="white"/>
-          </svg>
-          <p class="tip">Таможенное сопровождение</p>
-          <p class="second-text">Подготовка и сопровождение документов</p>
-        </div>
-        <div class="card advantage-card" style="background-color: #f0b90b;">
-          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
-            <path d="M2 17L12 22L22 17" stroke="white"/>
-            <path d="M2 12L12 17L22 12" stroke="white"/>
-          </svg>
-          <p class="tip">Индивидуальный подход</p>
-          <p class="second-text">К каждому клиенту</p>
+    <!-- Преимущества (простые карточки) -->
+    <section class="advantages" id="advantages">
+      <div class="container">
+        <h2 class="section-title">Наши преимущества</h2>
+        <div class="advantages__grid">
+          <!-- Первая строка: 4 карточки -->
+          <div class="cards-row">
+            <div class="card advantage-card" style="background-color: #007e9e;">
+              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10" stroke="white"/>
+                <path d="M6 12L10 16L18 8" stroke="white" stroke-linecap="round"/>
+              </svg>
+              <p class="tip">Гибкая система платежей</p>
+              <p class="second-text">Включая расчёты через монгольские счета</p>
+            </div>
+            <div class="card advantage-card" style="background-color: #0062ff;">
+              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+                <rect x="4" y="8" width="16" height="12" rx="2" stroke="white"/>
+                <path d="M8 6V4M16 6V4" stroke="white"/>
+                <path d="M8 12H16M8 16H12" stroke="white"/>
+              </svg>
+              <p class="tip">Опыт работы</p>
+              <p class="second-text">С транзитными, импортными и экспортными грузами</p>
+            </div>
+            <div class="card advantage-card" style="background-color: #18cd5e;">
+              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
+                <path d="M2 17L12 22L22 17" stroke="white"/>
+                <path d="M2 12L12 17L22 12" stroke="white"/>
+              </svg>
+              <p class="tip">Таможенное сопровождение</p>
+              <p class="second-text">Подготовка и сопровождение документов</p>
+            </div>
+            <div class="card advantage-card" style="background-color: #f0b90b;">
+              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
+                <path d="M2 17L12 22L22 17" stroke="white"/>
+                <path d="M2 12L12 17L22 12" stroke="white"/>
+              </svg>
+              <p class="tip">Индивидуальный подход</p>
+              <p class="second-text">К каждому клиенту</p>
+            </div>
+          </div>
+          <!-- Вторая строка: одна широкая карточка -->
+          <div class="cards-row wide">
+            <div class="card advantage-card wide-card" style="background-color: #8b1e1e;">
+              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+                <circle cx="12" cy="8" r="3" stroke="white"/>
+                <circle cx="18" cy="16" r="3" stroke="white"/>
+                <circle cx="6" cy="16" r="3" stroke="white"/>
+                <path d="M12 11V16M15 16H9" stroke="white"/>
+              </svg>
+              <p class="tip">Активное управление</p>
+              <p class="second-text">Взаимодействуем с железными дорогами для ускорения продвижения ваших грузов</p>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Вторая строка: одна широкая карточка -->
-      <div class="cards-row wide">
-        <div class="card advantage-card wide-card" style="background-color: #8b1e1e;">
-          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-            <circle cx="12" cy="8" r="3" stroke="white"/>
-            <circle cx="18" cy="16" r="3" stroke="white"/>
-            <circle cx="6" cy="16" r="3" stroke="white"/>
-            <path d="M12 11V16M15 16H9" stroke="white"/>
-          </svg>
-          <p class="tip">Активное управление</p>
-          <p class="second-text">Взаимодействуем с железными дорогами для ускорения продвижения ваших грузов</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- Интерактивный блок "Как стать клиентом" (аккордеон) -->
     <section class="how" id="how">
@@ -420,7 +425,7 @@
       </div>
     </section>
 
-    <!-- Контакты + карта -->
+    <!-- Контакты + карта (с обновлёнными координатами) -->
     <section class="contacts" id="contacts">
       <div class="container">
         <h2 class="section-title">Контакты</h2>
@@ -433,7 +438,7 @@
             <p><i class="fab fa-weixin" aria-hidden="true"></i> WeChat доступен по номерам</p>
           </div>
           <div class="contacts__map">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=104.295075%2C52.276275&z=16&pt=104.295075,52.276275,pm2rdm" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" title="Карта проезда"></iframe>
+            <iframe src="https://yandex.ru/map-widget/v1/?ll=104.255274%2C52.270276&z=16&pt=104.255274,52.270276,pm2rdm" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" title="Карта проезда"></iframe>
           </div>
         </div>
       </div>
@@ -445,17 +450,6 @@
       <p>© 2025 MonLogistics Trans Service. Все права защищены.</p>
     </div>
   </footer>
-
-  <!-- SVG-фильтр для эффекта goo -->
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
-    <defs>
-      <filter id="goo">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-        <feBlend in="SourceGraphic" in2="goo" />
-      </filter>
-    </defs>
-  </svg>
 
   <!-- Модальное окно для заявки -->
   <div class="modal-overlay" id="modalOverlay">

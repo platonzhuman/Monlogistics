@@ -160,38 +160,79 @@ body {
   color: #8b1e1e;
 }
 
-.header__burger {
+/* ГАМБУРГЕР (стилизованный чекбокс) */
+.header__checkbox {
   display: none;
-  flex-direction: column;
-  gap: 6px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
 }
 
-.header__burger span {
-  width: 25px;
-  height: 2px;
-  background-color: #1e1e2a;
-  transition: all 0.3s;
+.header__toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition-duration: 0.3s;
+  margin-left: 10px;
+}
+
+.header__toggle .bars {
+  width: 100%;
+  height: 4px;
+  background-color: #8b1e1e;
+  border-radius: 5px;
+  transition-duration: 0.3s;
+}
+
+/* Анимация при открытом меню */
+.header__checkbox:checked + .header__toggle #bar2 {
+  transform: translateY(12px) rotate(60deg);
+  transform-origin: right;
+}
+
+.header__checkbox:checked + .header__toggle #bar1 {
+  transform: translateY(20px) rotate(-60deg);
+  transform-origin: left;
+}
+
+.header__checkbox:checked + .header__toggle {
+  transform: rotate(-90deg);
+}
+
+.header__checkbox:checked + .header__toggle #bar3 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+/* На десктопе гамбургер скрыт */
+@media (min-width: 993px) {
+  .header__checkbox,
+  .header__toggle {
+    display: none;
+  }
 }
 
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: -100%;
-  width: 280px;
-  height: 100vh;
+  top: 50%;
+  left: -320px;
+  transform: translateY(-50%);
+  width: 300px;
   background: white;
-  box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
   padding: 2rem 1.5rem;
   transition: left 0.3s ease;
   z-index: 200;
+  border-radius: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .mobile-menu.active {
-  left: 0;
+  left: 20px;
 }
 
 .mobile-menu__close {
@@ -207,7 +248,7 @@ body {
 
 .mobile-menu nav ul {
   list-style: none;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .mobile-menu nav li {
@@ -217,13 +258,43 @@ body {
 .mobile-menu nav a {
   text-decoration: none;
   color: #1e1e2a;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
-@media (max-width: 992px) {
-  .header__nav { display: none; }
-  .header__burger { display: flex; }
+.mobile-menu nav a:hover {
+  color: #8b1e1e;
+}
+
+/* Оверлей */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 150;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 600px) {
+  .mobile-menu {
+    width: 260px;
+    left: -280px;
+  }
+  .mobile-menu.active {
+    left: 10px;
+  }
 }
 
 /* ===== ЗАГОЛОВКИ ===== */
@@ -881,3 +952,21 @@ body {
 .summary-list li { margin-bottom:10px; color:#1e1e2a; font-size:1rem; padding:8px 12px; background:white; border-radius:12px; }
 .summary-list li strong { color:#8b1e1e; margin-right:8px; }
 @media (max-width:600px) { .modal-container { padding:25px 20px; } }
+
+
+/* Исправление видимости гамбургера на мобильных */
+@media (max-width: 992px) {
+  .header__container {
+    gap: 10px !important; /* уменьшаем промежуток, чтобы кнопка точно поместилась */
+  }
+  .header__toggle {
+    display: flex !important; /* принудительно показываем */
+    /* Для отладки можно временно добавить фон и рамку: */
+    /* background: rgba(255,0,0,0.3); */
+    /* border: 2px solid red; */
+  }
+  /* Убедимся, что навигация скрыта */
+  .header__nav {
+    display: none !important;
+  }
+}

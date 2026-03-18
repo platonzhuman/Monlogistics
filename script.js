@@ -1,4 +1,4 @@
-// script.js – финальная версия (без жидкости)
+// script.js – финальная версия (без жидкости, с новым гамбургером)
 document.addEventListener('DOMContentLoaded', () => {
   // ========== ПРЕЛОАДЕР ==========
   const preloader = document.getElementById('preloader');
@@ -41,15 +41,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========== БУРГЕР-МЕНЮ ==========
-  const burger = document.getElementById('burgerBtn');
+  // ========== ГАМБУРГЕР-МЕНЮ (с чекбоксом) ==========
+  const checkbox = document.getElementById('checkbox');
   const mobileMenu = document.getElementById('mobileMenu');
   const closeBtn = document.getElementById('closeBtn');
-  if (burger && mobileMenu && closeBtn) {
-    burger.addEventListener('click', () => mobileMenu.classList.add('active'));
-    closeBtn.addEventListener('click', () => mobileMenu.classList.remove('active'));
+  const overlay = document.getElementById('menuOverlay');
+
+  function closeMenu() {
+    mobileMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    checkbox.checked = false; // сбрасываем чекбокс
+  }
+
+  function openMenu() {
+    mobileMenu.classList.add('active');
+    overlay.classList.add('active');
+    checkbox.checked = true; // устанавливаем чекбокс
+  }
+
+  if (checkbox && mobileMenu && closeBtn && overlay) {
+    // Открытие/закрытие при клике на гамбургер
+    checkbox.addEventListener('change', function(e) {
+      if (this.checked) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+    });
+
+    // Закрытие по крестику в меню
+    closeBtn.addEventListener('click', closeMenu);
+
+    // Закрытие по клику на оверлей
+    overlay.addEventListener('click', closeMenu);
+
+    // Закрытие при клике на ссылку в меню
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+      link.addEventListener('click', closeMenu);
     });
   }
 
