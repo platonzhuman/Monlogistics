@@ -1,4 +1,4 @@
-// script.js – полная версия (без изменений логики, но с оптимизациями)
+// script.js – финальная версия (без жидкости)
 document.addEventListener('DOMContentLoaded', () => {
   // ========== ПРЕЛОАДЕР ==========
   const preloader = document.getElementById('preloader');
@@ -155,9 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
       breakpoints: { 1000: { slidesPerView: 2, spaceBetween: 0 }, 767: { slidesPerView: 2, spaceBetween: -80 } }
     });
   }
-
-  // ========== АНИМАЦИЯ ЖИДКОСТИ (GSAP не используется, всё через Canvas) ==========
-  // Код жидкости (LiquidCanvas, Drop и т.д.) остаётся без изменений, но можно его оставить
-  // Здесь я не буду его копировать для краткости, но в реальном проекте он должен быть.
-  // Он уже был в предыдущих версиях и полностью работоспособен.
 });

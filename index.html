@@ -152,72 +152,65 @@
       </div>
     </section>
 
-    <!-- Преимущества (жидкость с эффектом перетекания) – оставляем как было, но с оптимизациями -->
-    <section class="advantages" id="advantages">
-      <div class="container">
-        <h2 class="section-title">Наши преимущества</h2>
-
-        <!-- Сетка карточек (к ней применён goo-фильтр) -->
-        <div class="cards-grid">
-          <!-- Карточка 1: Гибкая система платежей -->
-          <div class="card" id="card1">
-            <canvas class="liquid-canvas" id="canvas1" width="300" height="400"></canvas>
-            <div class="card-content">
-              <!-- Заменили эмодзи на красивый SVG -->
-              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-                <circle cx="12" cy="12" r="10" stroke="white"/>
-                <path d="M6 12L10 16L18 8" stroke="white" stroke-linecap="round"/>
-              </svg>
-              <h3>Гибкая система платежей</h3>
-              <p>Включая расчёты через монгольские счета</p>
-            </div>
-          </div>
-
-          <!-- Карточка 2: Опыт работы -->
-          <div class="card" id="card2">
-            <canvas class="liquid-canvas" id="canvas2" width="300" height="400"></canvas>
-            <div class="card-content">
-              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-                <rect x="4" y="8" width="16" height="12" rx="2" stroke="white"/>
-                <path d="M8 6V4M16 6V4" stroke="white"/>
-                <path d="M8 12H16M8 16H12" stroke="white"/>
-              </svg>
-              <h3>Опыт работы</h3>
-              <p>С транзитными, импортными и экспортными грузами</p>
-            </div>
-          </div>
-
-          <!-- Карточка 3: Таможенное сопровождение -->
-          <div class="card" id="card3">
-            <canvas class="liquid-canvas" id="canvas3" width="300" height="400"></canvas>
-            <div class="card-content">
-              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
-                <path d="M2 17L12 22L22 17" stroke="white"/>
-                <path d="M2 12L12 17L22 12" stroke="white"/>
-              </svg>
-              <h3>Таможенное сопровождение</h3>
-              <p>Подготовка документов</p>
-            </div>
-          </div>
-
-          <!-- Нижняя широкая карточка 4: Активное управление -->
-          <div class="card wide" id="card4">
-            <canvas class="liquid-canvas" id="canvas4" width="940" height="300"></canvas>
-            <div class="card-content">
-              <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
-                <circle cx="12" cy="8" r="3" stroke="white"/>
-                <circle cx="18" cy="16" r="3" stroke="white"/>
-                <circle cx="6" cy="16" r="3" stroke="white"/>
-                <path d="M12 11V16M15 16H9" stroke="white"/>
-              </svg>
-              <h3>Активное управление логистикой</h3>
-              <p>Взаимодействие с РЖД для ускорения грузов</p>
-            </div>
-          </div>
+<!-- Преимущества (простые карточки) -->
+<section class="advantages" id="advantages">
+  <div class="container">
+    <h2 class="section-title">Наши преимущества</h2>
+    <div class="advantages__grid">
+      <!-- Первая строка: 4 карточки -->
+      <div class="cards-row">
+        <div class="card advantage-card" style="background-color: #007e9e;">
+          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10" stroke="white"/>
+            <path d="M6 12L10 16L18 8" stroke="white" stroke-linecap="round"/>
+          </svg>
+          <p class="tip">Гибкая система платежей</p>
+          <p class="second-text">Включая расчёты через монгольские счета</p>
+        </div>
+        <div class="card advantage-card" style="background-color: #0062ff;">
+          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+            <rect x="4" y="8" width="16" height="12" rx="2" stroke="white"/>
+            <path d="M8 6V4M16 6V4" stroke="white"/>
+            <path d="M8 12H16M8 16H12" stroke="white"/>
+          </svg>
+          <p class="tip">Опыт работы</p>
+          <p class="second-text">С транзитными, импортными и экспортными грузами</p>
+        </div>
+        <div class="card advantage-card" style="background-color: #18cd5e;">
+          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
+            <path d="M2 17L12 22L22 17" stroke="white"/>
+            <path d="M2 12L12 17L22 12" stroke="white"/>
+          </svg>
+          <p class="tip">Таможенное сопровождение</p>
+          <p class="second-text">Подготовка и сопровождение документов</p>
+        </div>
+        <div class="card advantage-card" style="background-color: #f0b90b;">
+          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white"/>
+            <path d="M2 17L12 22L22 17" stroke="white"/>
+            <path d="M2 12L12 17L22 12" stroke="white"/>
+          </svg>
+          <p class="tip">Индивидуальный подход</p>
+          <p class="second-text">К каждому клиенту</p>
         </div>
       </div>
-    </section>
+      <!-- Вторая строка: одна широкая карточка -->
+      <div class="cards-row wide">
+        <div class="card advantage-card wide-card" style="background-color: #8b1e1e;">
+          <svg class="advantage-svg" viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="white" stroke-width="1.5">
+            <circle cx="12" cy="8" r="3" stroke="white"/>
+            <circle cx="18" cy="16" r="3" stroke="white"/>
+            <circle cx="6" cy="16" r="3" stroke="white"/>
+            <path d="M12 11V16M15 16H9" stroke="white"/>
+          </svg>
+          <p class="tip">Активное управление</p>
+          <p class="second-text">Взаимодействуем с железными дорогами для ускорения продвижения ваших грузов</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Интерактивный блок "Как стать клиентом" (аккордеон) -->
     <section class="how" id="how">
