@@ -1,4 +1,4 @@
-// script.js – финальная версия (без жидкости, с новым гамбургером)
+// script.js – финальная версия с красным словом Logistics и исправленным слайдером
 document.addEventListener('DOMContentLoaded', () => {
   // ========== ПРЕЛОАДЕР ==========
   const preloader = document.getElementById('preloader');
@@ -9,15 +9,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameText = 'MonLogistics Trans Service';
   const subtitleText = 'Транспортно — Логистическая компания';
 
-  function typeText(container, text, speed, callback) {
+  // Функция для печати с возможностью выделения диапазона индексов красным
+  function typeText(container, text, speed, callback, highlightRange = null) {
     let index = 0;
     if (cursor.parentNode !== container) container.appendChild(cursor);
+    
     function type() {
       if (index < text.length) {
         const char = text[index];
         const span = document.createElement('span');
         span.className = 'letter' + (char === ' ' ? ' space' : '');
         span.innerHTML = char === ' ' ? '&nbsp;' : char;
+        
+        // Если задан диапазон и текущий индекс входит в него, добавляем красный класс
+        if (highlightRange && index >= highlightRange.start && index <= highlightRange.end) {
+          span.classList.add('red-letter');
+        }
+        
         container.insertBefore(span, cursor);
         setTimeout(() => span.classList.add('visible'), 10);
         index++;
@@ -29,6 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (preloader && loaderName && loaderSubtitle && cursor) {
     loaderName.innerHTML = loaderSubtitle.innerHTML = '';
+    
+    // Определяем диапазон индексов для слова "Logistics" в строке "MonLogistics Trans Service"
+    // Индексы: 0:M,1:o,2:n,3:L,4:o,5:g,6:i,7:s,8:t,9:i,10:c,11:s,12:пробел,13:T...
+    // Значит Logistics с 3 по 11 (включительно)
+    const logisticsRange = { start: 3, end: 11 };
+    
     typeText(loaderName, nameText, 80, () => {
       setTimeout(() => {
         typeText(loaderSubtitle, subtitleText, 40, () => {
@@ -38,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 800);
         });
       }, 400);
-    });
+    }, logisticsRange);
   }
 
-  // ========== ГАМБУРГЕР-МЕНЮ (с чекбоксом) ==========
+  // ========== ГАМБУРГЕР-МЕНЮ ==========
   const checkbox = document.getElementById('checkbox');
   const mobileMenu = document.getElementById('mobileMenu');
   const closeBtn = document.getElementById('closeBtn');
@@ -50,32 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeMenu() {
     mobileMenu.classList.remove('active');
     overlay.classList.remove('active');
-    checkbox.checked = false; // сбрасываем чекбокс
+    checkbox.checked = false;
   }
 
   function openMenu() {
     mobileMenu.classList.add('active');
     overlay.classList.add('active');
-    checkbox.checked = true; // устанавливаем чекбокс
+    checkbox.checked = true;
   }
 
   if (checkbox && mobileMenu && closeBtn && overlay) {
-    // Открытие/закрытие при клике на гамбургер
     checkbox.addEventListener('change', function(e) {
-      if (this.checked) {
-        openMenu();
-      } else {
-        closeMenu();
-      }
+      if (this.checked) openMenu(); else closeMenu();
     });
-
-    // Закрытие по крестику в меню
     closeBtn.addEventListener('click', closeMenu);
-
-    // Закрытие по клику на оверлей
     overlay.addEventListener('click', closeMenu);
-
-    // Закрытие при клике на ссылку в меню
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
@@ -172,15 +175,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ========== СЛАЙДЕР ==========
+  // ========== СЛАЙДЕР УСЛУГ (исправленный) ==========
   if (typeof Swiper !== 'undefined' && document.querySelector('.services-swiper')) {
-    new Swiper('.services-swiper', {
-      loop: true, speed: 800, slidesPerView: 1, spaceBetween: 0, centeredSlides: true,
-      effect: 'coverflow', coverflowEffect: { rotate: 50, stretch: 0, depth: 60, modifier: 1, slideShadows: true },
-      grabCursor: true, parallax: true,
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      breakpoints: { 1000: { slidesPerView: 2, spaceBetween: 0 }, 767: { slidesPerView: 2, spaceBetween: -80 } }
-    });
+    setTimeout(() => {
+      const swiper = new Swiper('.services-swiper', {
+        loop: true,
+        speed: 800,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        effect: 'coverflow',
+        coverflowEffect: {
+          rotate: 30,          // уменьшен угол для меньшего искажения
+          stretch: 0,
+          depth: 40,            // уменьшена глубина
+          modifier: 1,
+          slideShadows: true,
+        },
+        grabCursor: true,
+        parallax: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 0,
+          },
+          992: {
+            slidesPerView: 2,
+            spaceBetween: 0,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: -80,
+          },
+        },
+        on: {
+          init: function () {
+            this.update(); // пересчёт после инициализации
+          }
+        }
+      });
+      // Дополнительный пересчёт для устранения стартового бага
+      setTimeout(() => {
+        if (swiper) swiper.update();
+      }, 100);
+    }, 100);
   }
+  
 });
