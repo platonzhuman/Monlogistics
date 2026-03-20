@@ -1107,7 +1107,7 @@ body {
     font-size: 0.9rem;
   }
 }
-/* ===== СЛАЙДЕР УСЛУГ ===== */
+/* ===== СЛАЙДЕР УСЛУГ (с прокруткой длинного текста) ===== */
 .services {
   padding: 100px 0;
   background: transparent;
@@ -1115,7 +1115,7 @@ body {
 
 .services-swiper {
   width: 100%;
-  height: 700px;
+  height: 700px; /* фиксированная высота, слайдер не ломается */
   padding: 20px 0 60px;
   overflow: hidden;
 }
@@ -1165,35 +1165,49 @@ body {
 }
 
 .services-swiper .swiper-slide .swiper-content .swiper-title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
-  line-height: 1.2;
+  line-height: 1.3;
   text-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .services-swiper .swiper-slide .swiper-content .swiper-caption {
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   padding: 6px 15px;
   background: rgba(240,185,11,0.2);
   border-radius: 40px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   border: 1px solid rgba(240,185,11,0.4);
 }
 
 .services-swiper .swiper-slide .swiper-content .swiper-description {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
   margin-bottom: 20px;
   opacity: 0.9;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  line-clamp: 3; /* стандартное свойство для совместимости */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Прокрутка, если текст не помещается */
+  max-height: 120px; /* примерно 5-6 строк при таком line-height */
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #f0b90b rgba(255,255,255,0.2);
+}
+
+.services-swiper .swiper-slide .swiper-content .swiper-description::-webkit-scrollbar {
+  width: 5px;
+}
+
+.services-swiper .swiper-slide .swiper-content .swiper-description::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+}
+
+.services-swiper .swiper-slide .swiper-content .swiper-description::-webkit-scrollbar-thumb {
+  background: #f0b90b;
+  border-radius: 10px;
 }
 
 .services-swiper .swiper-slide .swiper-content .swiper-link {
@@ -1202,7 +1216,7 @@ body {
   gap: 10px;
   color: #fff;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px 24px;
   background: linear-gradient(135deg, #f0b90b, #d4a00b);
   border-radius: 50px;
@@ -1218,6 +1232,7 @@ body {
   box-shadow: 0 15px 30px -5px rgba(240,185,11,0.6);
 }
 
+/* Пагинация и стрелки без изменений */
 .services-swiper .swiper-pagination { bottom: 0 !important; }
 .services-swiper .swiper-pagination-bullet {
   margin: 0 12px;
@@ -1268,47 +1283,48 @@ body {
   border-color: #8b1e1e;
 }
 
+/* Адаптивность */
 @media (max-width: 1200px) {
   .services-swiper { height: 650px; }
   .services-swiper .swiper-slide .swiper-content { padding: 20px 25px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 24px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 22px; }
 }
 @media (max-width: 992px) {
   .services-swiper { height: 600px; }
   .services-swiper .swiper-slide .swiper-content { bottom: 5%; left: 5%; right: 5%; padding: 18px 22px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 22px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 14px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 14px; -webkit-line-clamp: 2; line-clamp: 2; }
-  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 14px; padding: 8px 20px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 20px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 13px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 13px; max-height: 110px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 13px; padding: 8px 20px; }
   .services-swiper .swiper-button-prev, .services-swiper .swiper-button-next { width: 44px; height: 44px; }
   .services-swiper .swiper-button-prev:after, .services-swiper .swiper-button-next:after { font-size: 20px; }
 }
 @media (max-width: 768px) {
   .services-swiper { height: 550px; padding: 20px 0 50px; }
   .services-swiper .swiper-slide .swiper-content { padding: 15px 18px; border-left-width: 4px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 20px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 13px; padding: 4px 12px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 13px; margin-bottom: 15px; -webkit-line-clamp: 2; line-clamp: 2; }
-  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 13px; padding: 7px 18px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 18px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 12px; padding: 4px 12px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 12px; max-height: 100px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 12px; padding: 7px 18px; }
   .services-swiper .swiper-pagination-bullet { width: 10px; height: 10px; margin: 0 8px; }
 }
 @media (max-width: 576px) {
   .services-swiper { height: 500px; }
   .services-swiper .swiper-slide { border-radius: 20px; }
   .services-swiper .swiper-slide .swiper-content { bottom: 4%; left: 4%; right: 4%; padding: 12px 15px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 18px; margin-bottom: 5px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 12px; margin-bottom: 8px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 12px; -webkit-line-clamp: 2; line-clamp: 2; margin-bottom: 10px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 12px; padding: 6px 15px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 16px; margin-bottom: 5px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 11px; margin-bottom: 8px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 11px; max-height: 90px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 11px; padding: 6px 15px; }
   .services-swiper .swiper-button-prev, .services-swiper .swiper-button-next { width: 36px; height: 36px; }
   .services-swiper .swiper-button-prev:after, .services-swiper .swiper-button-next:after { font-size: 16px; }
 }
 @media (max-width: 400px) {
   .services-swiper { height: 450px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 16px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 11px; }
-  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 11px; -webkit-line-clamp: 2; line-clamp: 2; }
-  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 11px; padding: 5px 12px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-title { font-size: 14px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-caption { font-size: 10px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-description { font-size: 10px; max-height: 80px; }
+  .services-swiper .swiper-slide .swiper-content .swiper-link { font-size: 10px; padding: 5px 12px; }
 }
 
 /* ===== КОНТАКТЫ / ФУТЕР ===== */
@@ -1332,13 +1348,36 @@ body {
   flex-direction: column;
   gap: 20px;
 }
-.footer-logo img { max-height: 50px; width: auto; }
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(139, 30, 30, 0.1), 0 5px 10px -5px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(139, 30, 30, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.footer-logo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -5px rgba(139, 30, 30, 0.2);
+}
+
+.footer-logo img {
+  display: block;
+  max-height: 40px;
+  width: auto;
+}
 .brand-description {
   color: #ffffff;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
 }
+
+
 .footer-social { display: flex; gap: 15px; }
 .social-icon {
   display: inline-flex;
@@ -1617,4 +1656,9 @@ body {
   .header__container { gap: 10px !important; }
   .header__toggle { display: flex !important; }
   .header__nav { display: none !important; }
+}
+
+.hero-card:hover .content,
+.hero-card.active .content {
+  transform: rotateY(180deg);
 }

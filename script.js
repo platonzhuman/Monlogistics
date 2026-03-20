@@ -227,4 +227,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
     }, 100);
   }
-});
+// ... (весь предыдущий код остаётся без изменений)
+
+  // ========== ПЕРЕВОРОТ КАРТОЧКИ НА МОБИЛЬНЫХ ==========
+  const heroCard = document.querySelector('.hero-card');
+  if (heroCard) {
+    // Определяем, что устройство сенсорное
+    if ('ontouchstart' in window || navigator.maxTouchPoints) {
+      heroCard.addEventListener('click', function(e) {
+        // Если кликнули на кнопку – не переворачиваем, даём открыть модалку
+        if (e.target.closest('.card-btn')) {
+          return;
+        }
+        // Переключаем класс active на карточке
+        this.classList.toggle('active');
+      });
+    }
+  }
+
+}); // закрываем DOMContentLoaded
