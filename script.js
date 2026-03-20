@@ -186,9 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
         centeredSlides: true,
         effect: 'coverflow',
         coverflowEffect: {
-          rotate: 30,          // уменьшен угол для меньшего искажения
+          rotate: 30,
           stretch: 0,
-          depth: 40,            // уменьшена глубина
+          depth: 40,
           modifier: 1,
           slideShadows: true,
         },
@@ -218,15 +218,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         on: {
           init: function () {
-            this.update(); // пересчёт после инициализации
+            this.update();
           }
         }
       });
-      // Дополнительный пересчёт для устранения стартового бага
       setTimeout(() => {
         if (swiper) swiper.update();
       }, 100);
     }, 100);
   }
-  
 });

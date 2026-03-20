@@ -14,14 +14,20 @@
   
   <!-- Preload критических ресурсов -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" as="style">
-  <link rel="preload" href="style.css" as="style">
-  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" as="image" href="./images/vagon-left.webp" imagesrcset="./images/vagon-left.webp" fetchpriority="high">
   
-  <!-- CSS -->
+  <!-- Основной CSS (синхронно, чтобы избежать FOUC) -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Асинхронная загрузка некритических CSS (Swiper и FontAwesome) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+  
+  <!-- Подключение шрифтов (уже предзагружено) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -84,7 +90,8 @@
       <div class="hero__bg">
         <picture>
           <source srcset="./images/vagon-left.webp" type="image/webp">
-          <img src="./images/vagon-left.webp" alt="Поезд на фоне гор" width="1920" height="1080" loading="eager">
+          <!-- Добавлен fetchpriority="high" для LCP -->
+          <img src="./images/vagon-left.webp" fetchpriority="high" alt="Поезд на фоне гор" width="1920" height="1080">
         </picture>
       </div>
 
@@ -154,7 +161,6 @@
     </section>
 
    <!-- Преимущества (стильные карточки) -->
-<!-- Преимущества (стильные карточки) -->
 <section class="advantages" id="advantages">
   <div class="container">
     <h2 class="section-title">Наши преимущества</h2>
@@ -539,7 +545,7 @@
       <!-- Колонка 1: Бренд -->
       <div class="contacts__brand">
         <div class="footer-logo">
-          <img src="./images/logo_nophone.PNG" alt="MonLogistics" width="150" height="40">
+          <img src="./images/logo_nophone.PNG" alt="MonLogistics" width="150" height="40" loading="lazy">
         </div>
         <!-- Карта теперь здесь, на месте текста-описания -->
         <div class="contacts__map">
@@ -646,8 +652,8 @@
     </div>
   </div>
 
-  <!-- Swiper JS должен быть перед script.js -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Swiper JS (defer для неблокирующей загрузки) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>
