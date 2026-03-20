@@ -12,14 +12,13 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #ffffff 0%, #dce7f1 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #1e1e2a 100%);
   color: #1e1e2a;
   line-height: 1.5;
   overflow-x: hidden;
   width: 100%;
   min-height: 100vh;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -109,16 +108,57 @@ body {
   width: 0.3em;
 }
 
+/* Мобильные стили для прелоадера */
 @media (max-width: 768px) {
-  .loader-name, .loader-subtitle {
-    white-space: normal;
-    word-break: break-word;
+  .loader-content {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    padding: 0 15px;
+  }
+  .loader-name,
+  .loader-subtitle {
+    white-space: normal !important;
+    word-break: break-word !important;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    hyphens: auto;
   }
   .loader-cursor {
     height: 2rem;
   }
 }
 
+@media (max-width: 480px) {
+  .loader-content {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+  .loader-name {
+    font-size: 1.2rem;
+  }
+  .loader-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .loader-content {
+    font-size: 1.1rem;
+    padding: 0 10px;
+  }
+  .loader-name {
+    font-size: 1.1rem;
+  }
+  .loader-subtitle {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .loader-cursor {
+    height: 1.2rem;
+    width: 3px;
+    margin-left: 2px;
+    vertical-align: middle;
+  }
+}
 /* ===== ШАПКА ===== */
 .header {
   position: fixed;
@@ -1010,7 +1050,63 @@ body {
 .animated-button:hover svg { fill: #1e1e2a; }
 .animated-button:active { scale: 0.95; box-shadow: 0 0 0 4px #f0b90b; }
 .animated-button:hover .circle { width: 220px; height: 220px; opacity: 1; background: #f0b90b; }
+/* Стили для нового этапа "Предоставьте документы" */
+.docs-intro {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #1e1e2a;
+}
 
+.docs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+.docs-list {
+  list-style: none;
+  padding: 0;
+}
+
+.docs-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  color: #4a4a5a;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.docs-list li::before {
+  content: '📄';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.docs-note {
+  font-style: italic;
+  color: #8b1e1e;
+  background: rgba(139, 30, 30, 0.05);
+  padding: 15px 20px;
+  border-radius: 16px;
+  border-left: 4px solid #f0b90b;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .docs-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .docs-list li {
+    font-size: 0.9rem;
+  }
+}
 /* ===== СЛАЙДЕР УСЛУГ ===== */
 .services {
   padding: 100px 0;
@@ -1218,15 +1314,15 @@ body {
 /* ===== КОНТАКТЫ / ФУТЕР ===== */
 .contacts {
   background: transparent;
-  color: #1e1e2a;
+  color: #ffffff;
   padding: 60px 0 0;
 }
-.contacts .section-title { color: #1e1e2a; margin-bottom: 40px; }
+.contacts .section-title { color: #ffffff; margin-bottom: 40px; }
 .contacts .section-title::after { background: linear-gradient(90deg, #8b1e1e, #f0b90b); }
 
 .contacts__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1.2fr; /* последняя колонка шире */
   gap: 40px;
   margin-bottom: 50px;
 }
@@ -1238,7 +1334,7 @@ body {
 }
 .footer-logo img { max-height: 50px; width: auto; }
 .brand-description {
-  color: #4a4a5a;
+  color: #ffffff;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -1267,7 +1363,7 @@ body {
 .contacts__nav h3,
 .contacts__services h3,
 .contacts__info h3 {
-  color: #1e1e2a;
+  color: #ffffff;
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 20px;
@@ -1289,23 +1385,23 @@ body {
 .contacts__nav ul, .contacts__services ul { list-style: none; }
 .contacts__nav li, .contacts__services li { margin-bottom: 10px; }
 .contacts__nav a {
-  color: #4a4a5a;
+  color: #ffffff;
   text-decoration: none;
   transition: all 0.3s;
   display: inline-block;
 }
 .contacts__nav a:hover {
-  color: #8b1e1e;
+  color: #ffffff;
   transform: translateX(5px);
 }
 .contacts__services li {
-  color: #4a4a5a;
+  color: #ffffff;
   font-size: 0.95rem;
   transition: all 0.3s;
   cursor: default;
 }
 .contacts__services li:hover {
-  color: #8b1e1e;
+  color: #ffffff;
   transform: translateX(5px);
 }
 
@@ -1314,7 +1410,7 @@ body {
   flex-direction: column;
   gap: 25px;
 }
-.contacts__info address { font-style: normal; color: #4a4a5a; }
+.contacts__info address { font-style: normal; color: #ffffff; }
 .contacts__info p {
   margin-bottom: 12px;
   display: flex;
@@ -1328,7 +1424,7 @@ body {
   font-size: 1.1rem;
 }
 .contacts__info a {
-  color: #4a4a5a;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -1357,9 +1453,9 @@ body {
   flex-wrap: wrap;
   gap: 15px;
 }
-.copyright { color: #4a4a5a; font-size: 0.9rem; margin: 0; }
+.copyright { color: #ffffff; font-size: 0.9rem; margin: 0; }
 .privacy-link {
-  color: #4a4a5a;
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s;
