@@ -1,4 +1,4 @@
-// script.js – финальная версия с красным словом Logistics и исправленным слайдером
+// script.js – финальная версия с отправкой через Formspree
 document.addEventListener('DOMContentLoaded', () => {
   // ========== ПРЕЛОАДЕР ==========
   const preloader = document.getElementById('preloader');
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         span.className = 'letter' + (char === ' ' ? ' space' : '');
         span.innerHTML = char === ' ' ? '&nbsp;' : char;
         
-        // Если задан диапазон и текущий индекс входит в него, добавляем красный класс
         if (highlightRange && index >= highlightRange.start && index <= highlightRange.end) {
           span.classList.add('red-letter');
         }
@@ -38,9 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (preloader && loaderName && loaderSubtitle && cursor) {
     loaderName.innerHTML = loaderSubtitle.innerHTML = '';
     
-    // Определяем диапазон индексов для слова "Logistics" в строке "MonLogistics Trans Service"
-    // Индексы: 0:M,1:o,2:n,3:L,4:o,5:g,6:i,7:s,8:t,9:i,10:c,11:s,12:пробел,13:T...
-    // Значит Logistics с 3 по 11 (включительно)
     const logisticsRange = { start: 3, end: 11 };
     
     typeText(loaderName, nameText, 80, () => {
@@ -161,10 +157,47 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep(5);
   });
 
-  modal.submit?.addEventListener('click', () => {
-    alert('Спасибо! Ваша заявка отправлена.');
-    modal.overlay.classList.remove('active');
-  });
+  // ОТПРАВКА ФОРМЫ ЧЕРЕЗ FORMSPREE
+  if (modal.submit) {
+    modal.submit.addEventListener('click', async () => {
+      // Собираем данные
+      const formData = new FormData();
+      formData.append('name', modal.inputs.name.value.trim());
+      formData.append('email', modal.inputs.email.value.trim());
+      formData.append('service', modal.inputs.service.value);
+      formData.append('message', modal.inputs.message.value.trim());
+      // Добавляем дополнительное поле для subject (опционально)
+      formData.append('_subject', 'Новая заявка с сайта MonLogistics');
+
+      try {
+        const response = await fetch('https://formspree.io/f/mojkollg', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          alert('Спасибо! Ваша заявка отправлена. Наш менеджер свяжется с вами.');
+          modal.overlay.classList.remove('active');
+          // Очищаем поля
+          modal.inputs.name.value = '';
+          modal.inputs.email.value = '';
+          modal.inputs.service.value = '';
+          modal.inputs.message.value = '';
+          showStep(1);
+        } else {
+          const errorData = await response.json();
+          alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
+          console.error('Formspree error:', errorData);
+        }
+      } catch (error) {
+        alert('Ошибка сети. Проверьте подключение к интернету.');
+        console.error('Network error:', error);
+      }
+    });
+  }
 
   // ========== ПЛАВНЫЙ СКРОЛЛ ==========
   document.querySelectorAll('a[href^="#"]:not(.modal-trigger)').forEach(anchor => {
@@ -175,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ========== СЛАЙДЕР УСЛУГ (исправленный) ==========
+  // ========== СЛАЙДЕР УСЛУГ ==========
   if (typeof Swiper !== 'undefined' && document.querySelector('.services-swiper')) {
     setTimeout(() => {
       const swiper = new Swiper('.services-swiper', {
@@ -203,48 +236,27 @@ document.addEventListener('DOMContentLoaded', () => {
           prevEl: '.swiper-button-prev',
         },
         breakpoints: {
-          1200: {
-            slidesPerView: 3,
-            spaceBetween: 0,
-          },
-          992: {
-            slidesPerView: 2,
-            spaceBetween: 0,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: -80,
-          },
+          1200: { slidesPerView: 3, spaceBetween: 0 },
+          992: { slidesPerView: 2, spaceBetween: 0 },
+          768: { slidesPerView: 2, spaceBetween: -80 },
         },
         on: {
-          init: function () {
-            this.update();
-          }
+          init: function () { this.update(); }
         }
       });
-      setTimeout(() => {
-        if (swiper) swiper.update();
-      }, 100);
+      setTimeout(() => { if (swiper) swiper.update(); }, 100);
     }, 100);
   }
-// ... (весь предыдущий код остаётся без изменений)
 
-// ========== ПЕРЕВОРОТ КАРТОЧКИ НА МОБИЛЬНЫХ ==========
-const heroCard = document.querySelector('.hero-card');
-if (heroCard) {
-  // Определяем, что устройство сенсорное
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints;
-  if (isTouchDevice) {
-    // Убираем hover-эффект на сенсорных устройствах, чтобы карточка не переворачивалась сама
-    heroCard.addEventListener('click', function(e) {
-      // Если кликнули на кнопку – не переворачиваем, даём открыть модалку
-      if (e.target.closest('.card-btn')) {
-        return;
-      }
-      // Переключаем класс active на карточке
-      this.classList.toggle('active');
-    });
+  // ========== ПЕРЕВОРОТ КАРТОЧКИ НА МОБИЛЬНЫХ ==========
+  const heroCard = document.querySelector('.hero-card');
+  if (heroCard) {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints;
+    if (isTouchDevice) {
+      heroCard.addEventListener('click', function(e) {
+        if (e.target.closest('.card-btn')) return;
+        this.classList.toggle('active');
+      });
+    }
   }
-}
-
-}); // закрываем DOMContentLoaded
+});

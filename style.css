@@ -1658,8 +1658,14 @@ body {
   .header__nav { display: none !important; }
 }
 
-.hero-card:hover .content,
+/* Для десктопов — поворот при наведении */
+@media (hover: hover) and (pointer: fine) {
+  .hero-card:hover .content {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Для всех устройств — поворот при активном классе (управляется JS) */
 .hero-card.active .content {
   transform: rotateY(180deg);
 }
-
