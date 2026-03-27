@@ -1,0 +1,11 @@
+# Разрешаем всем ботам индексировать весь сайт
+User-agent: *
+Allow: /
+
+# Указываем путь к карте сайта
+Sitemap: https://MonlogisticsTransService.com/sitemap.xml
+
+# Запрещаем индексировать служебные страницы (если есть)
+Disallow: /images/
+Disallow: /css/
+Disallow: /js/
