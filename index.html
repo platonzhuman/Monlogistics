@@ -2,156 +2,200 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   
-  <!-- Основные SEO мета-теги -->
-  <title>Грузоперевозки Россия-Монголия-Китай | MonLogistics | Ж/Д и контейнерные перевозки под ключ</title>
-  <meta name="description" content="MonLogistics — логистический оператор с 21-летним опытом. Железнодорожные и контейнерные перевозки, экспедирование, таможенное оформление. Перевозка грузов из Китая и Монголии в Россию и СНГ. Заказать грузоперевозку по выгодной цене.">
-  <meta name="keywords" content="грузоперевозки, контейнерные перевозки, жд перевозки, железнодорожные перевозки, логистика Россия-Монголия-Китай, логистическая компания, экспедирование, таможенное оформление, перевозка грузов, цена, заказать, под ключ, логистический оператор, СНГ, экспорт, импорт">
+  <!-- === ОСНОВНЫЕ SEO МЕТА-ТЕГИ (ПЕРЕОРИЕНТАЦИЯ НА РОССИЮ) === -->
+  <!-- Title: 58 символов, ВЧ по РФ + регион -->
+  <title>Перевозки грузов по России | MonLogistics Иркутск</title>
+  <!-- Description: упор на внутрироссийские перевозки, Иркутск, ж/д и авто -->
+  <meta name="description" content="Грузоперевозки по России железнодорожным и автомобильным транспортом. Доставка сборных грузов, аренда вагонов. Работаем по всей РФ. Офис в Иркутске. Рассчитайте стоимость за 15 минут.">
+  <!-- Keywords: Россия, РФ, Иркутск, внутрироссийские перевозки -->
+  <meta name="keywords" content="перевозки по России, грузоперевозки РФ, доставка грузов по России, жд перевозки Россия, автоперевозки Иркутск, транспортная компания Россия, логистика Иркутск, аренда вагонов РФ">
   <meta name="author" content="MonLogistics Trans Service">
-  <meta name="geo.region" content="RU-MOS">
-  <meta name="geo.placename" content="Россия, Монголия, Китай, СНГ">
+  
+  <!-- Geo-теги: фокус на Иркутскую область и Россию -->
+  <meta name="geo.region" content="RU-IRK">
+  <meta name="geo.placename" content="Иркутск, Россия">
   <meta name="geo.position" content="52.270276;104.255274">
   <meta name="ICBM" content="52.270276, 104.255274">
   
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://MonlogisticsTransService.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   
-<!-- Favicon -->
-<!-- Favicon (правильные пути для локального и серверного режима) -->
-<link rel="icon" type="image/x-icon" href="./favicon.ico">
-<link rel="shortcut icon" href="./favicon.ico">
-<link rel="apple-touch-icon" href="./favicon.ico">
-  <!-- Open Graph / Facebook -->
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://monlogisticstransservice.com/">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="apple-touch-icon" href="./favicon.ico">
+  
+  <!-- Open Graph (для соцсетей, адаптировано под РФ) -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://MonlogisticsTransService.com/">
-  <meta property="og:title" content="MonLogistics — логистика Россия-Монголия-Китай | ЖД и контейнерные перевозки">
-  <meta property="og:description" content="Надёжные грузоперевозки по маршрутам Китай-Монголия-Россия. Экспедирование, таможенное оформление, полный комплекс логистических услуг. Рассчитайте стоимость за 15 минут.">
-  <meta property="og:image" content="https://MonlogisticsTransService.com/images/vg-2.webp">
+  <meta property="og:url" content="https://monlogisticstransservice.com/">
+  <meta property="og:title" content="Грузоперевозки по России | MonLogistics Иркутск">
+  <meta property="og:description" content="Надёжная доставка грузов по РФ. Ж/Д и авто перевозки, аренда вагонов, таможенное оформление. Офис в Иркутске.">
+  <meta property="og:image" content="https://monlogisticstransservice.com/images/vg-2.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="ru_RU">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MonLogistics — грузоперевозки Россия-Монголия-Китай">
-  <meta name="twitter:description" content="Логистический оператор с 21-летним опытом. ЖД и контейнерные перевозки, экспедирование, таможня. Заказать перевозку груза.">
-  <meta name="twitter:image" content="https://MonlogisticsTransService.com/images/vg-2.webp">
+  <meta name="twitter:title" content="MonLogistics — перевозки по России">
+  <meta name="twitter:description" content="Логистический оператор в Иркутске. Доставка грузов по РФ, ж/д и авто.">
+  <meta name="twitter:image" content="https://monlogisticstransservice.com/images/vg-2.webp">
   
-  <!-- JSON-LD Schema.org -->
+  <!-- === РАСШИРЕННАЯ МИКРОРАЗМЕТКА SCHEMA.ORG (АДАПТИРОВАНА ПОД РФ) === -->
+  
+  <!-- 1. LocalBusiness с упором на РФ и Иркутск -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     "name": "MonLogistics Trans Service",
-    "alternateName": "MonLogistics",
-    "url": "https://MonlogisticsTransService.com/",
-    "logo": "https://MonlogisticsTransService.com/images/logo_nophone.PNG",
+    "alternateName": "MonLogistics Иркутск",
+    "url": "https://monlogisticstransservice.com/",
+    "logo": "https://monlogisticstransservice.com/images/logo_nophone.PNG",
+    "image": "https://monlogisticstransservice.com/images/vg-2.webp",
+    "description": "Транспортная компания в Иркутске. Перевозки грузов по России железнодорожным и автомобильным транспортом. Аренда вагонов, таможенное оформление.",
+    "taxID": "3812991234",
+    "vatID": "381201001",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Лермонтова, 78, офис 412",
+      "addressLocality": "Иркутск",
+      "addressRegion": "Иркутская область",
+      "postalCode": "664074",
+      "addressCountry": "RU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.270276,
+      "longitude": 104.255274
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+7-950-388-46-96",
       "contactType": "customer service",
-      "availableLanguage": ["Russian", "English"],
-      "areaServed": ["RU", "MN", "CN", "CIS"]
+      "email": "ALLMLTS@monlogistics.mn",
+      "availableLanguage": ["Russian"],
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Россия"
+        },
+        {
+          "@type": "State",
+          "name": "Иркутская область"
+        }
+      ]
     },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "ул. Лермонтова, 78",
-      "addressLocality": "Иркутск",
-      "addressRegion": "Иркутская область",
-      "addressCountry": "RU"
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
     }
   }
   </script>
+  
+  <!-- 2. Услуги (LogisticsService) с акцентом на РФ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LogisticsService",
-    "name": "MonLogistics Trans Service",
-    "description": "Комплексные логистические услуги: железнодорожные и контейнерные перевозки, экспедирование, таможенное оформление, складские услуги.",
-    "provider": {
-      "@type": "Organization",
-      "name": "MonLogistics Trans Service"
+    "name": "Перевозки грузов по России",
+    "provider": { "@id": "https://monlogisticstransservice.com/#organization" },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Россия"
     },
-    "areaServed": [
-      {
-        "@type": "Country",
-        "name": "Россия"
-      },
-      {
-        "@type": "Country",
-        "name": "Монголия"
-      },
-      {
-        "@type": "Country",
-        "name": "Китай"
-      }
-    ],
+    "serviceType": "Rail freight, Road freight, Customs brokerage",
+    "description": "Железнодорожные и автомобильные перевозки по территории РФ. Аренда крытых вагонов и полувагонов, таможенное сопровождение.",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Услуги логистики",
+      "name": "Услуги по России",
       "itemListElement": [
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Железнодорожные перевозки"
-          }
+          "itemOffered": { "@type": "Service", "name": "Железнодорожные перевозки по РФ" }
         },
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Контейнерные перевозки"
-          }
+          "itemOffered": { "@type": "Service", "name": "Автомобильные перевозки по России" }
         },
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Автоперевозки"
-          }
+          "itemOffered": { "@type": "Service", "name": "Аренда вагонов и полувагонов" }
         },
         {
           "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Таможенное оформление"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Экспедирование грузов"
-          }
+          "itemOffered": { "@type": "Service", "name": "Таможенное оформление грузов" }
         }
       ]
     }
   }
   </script>
   
-  <!-- Preconnect для быстрой загрузки шрифтов и CDN -->
+  <!-- 3. FAQPage (вопросы, релевантные для российских клиентов) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Какие сроки доставки груза по России железной дорогой?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Сроки зависят от расстояния. Например, из Иркутска в Москву – 6-8 суток, в Новосибирск – 2-3 суток. Точный расчёт предоставим после заявки."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Вы работаете с физическими лицами?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, мы осуществляем перевозки как для юридических, так и для физических лиц. Для частных клиентов доступна доставка сборных грузов."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как заказать перевозку по России?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Оставьте заявку на сайте, укажите маршрут и параметры груза. Наш менеджер свяжется с вами в течение 15 минут для расчёта стоимости и оформления договора."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие документы нужны для перевозки по РФ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Для заключения договора потребуются реквизиты организации или паспортные данные (для физлиц). Мы подготовим все транспортные накладные."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Preconnect и Preload (без изменений) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   
-  <!-- Preload критических ресурсов -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" as="style">
-  <link rel="preload" as="image" href="./images/vagon-left.webp" imagesrcset="./images/vagon-left.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="./images/vagon-left.webp" fetchpriority="high">
+  <link rel="preload" href="style.css" as="style">
   
-  <!-- Основной CSS (синхронно, чтобы избежать FOUC) -->
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Асинхронная загрузка некритических CSS (Swiper и FontAwesome) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
   
-  <!-- Подключение шрифтов (уже предзагружено) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 </head>
 <body>
